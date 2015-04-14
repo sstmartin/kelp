@@ -58,8 +58,12 @@ WSGI_APPLICATION = 'kelp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+      'NAME': 'dev',
+      'ENGINE': 'django.db.backends.postgresql_psycopg2',
+      'USER': 'master',
+      'PASSWORD': 'R3dSh1fT',
+      'HOST': 'yelp.cpslmnst922i.us-east-1.redshift.amazonaws.com',
+      'PORT': 5439,
     }
 }
 
