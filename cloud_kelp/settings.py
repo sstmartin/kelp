@@ -1,5 +1,5 @@
 """
-Django settings for kelp project.
+Django settings for cloud_kelp project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '%t@5rm8y7=dg!a(1ff$1)_xj3sq5lq#ku-(@2*ec8a)ruej-sr'
+SECRET_KEY = '9&f=vff0=*@4u(av2wtp#o&-kk9ijd(9$y*!w@8p#w-=-zf9+1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'website',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -48,9 +49,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'kelp.urls'
+ROOT_URLCONF = 'cloud_kelp.urls'
 
-WSGI_APPLICATION = 'kelp.wsgi.application'
+WSGI_APPLICATION = 'cloud_kelp.wsgi.application'
 
 
 # Database
@@ -58,14 +59,20 @@ WSGI_APPLICATION = 'kelp.wsgi.application'
 
 DATABASES = {
     'default': {
-      'NAME': 'dev',
-      'ENGINE': 'django.db.backends.postgresql_psycopg2',
-      'USER': 'master',
-      'PASSWORD': 'R3dSh1fT',
-      'HOST': 'yelp.cpslmnst922i.us-east-1.redshift.amazonaws.com',
-      'PORT': 5439,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+    'yelp_data': {
+        'NAME': 'dev',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'USER': 'master',
+        'PASSWORD': 'R3dSh1fT',
+        'HOST': 'yelp.cpslmnst922i.us-east-1.redshift.amazonaws.com',
+        'PORT': 5439,
     }
 }
+
+DATABASE_ROUTERS = ['website.router.WebsiteRouter']
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

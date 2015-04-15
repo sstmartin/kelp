@@ -8,7 +8,9 @@
 # Also note: You'll have to insert the output of 'django-admin.py sqlcustom [app_label]'
 # into your database.
 from __future__ import unicode_literals
+
 from django.db import models
+
 
 class Businesses(models.Model):
     business_id = models.CharField(primary_key=True, max_length=40)
