@@ -9,7 +9,9 @@ def trending(request):
     return render_to_response('trending.html')
 
 def results(request):
-    return render_to_response('results.html')
-
+    if 'search-text' in request.GET:
+        search_results = request.GET['search-text']
+    return render_to_response('results.html', {'search_results': search_results}, context_instance=RequestContext(request))
+    
 def details(request):
     return render_to_response('details.html')
