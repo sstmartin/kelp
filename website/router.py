@@ -17,7 +17,7 @@ class WebsiteRouter(object):
         return False
 
     def allow_syncdb(self, db, model):
-        if db == 'yelp_data' or model._meat.app_label == 'website':
+        if db == 'yelp_data' or model._meta.app_label == 'website':
             return False
         else:
             return True
