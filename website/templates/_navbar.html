@@ -1,22 +1,27 @@
+{% load staticfiles i18n %}
+<!DOCTYPE html>
+
 <html>
 <head>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    {% block meta_tags %}{% endblock %}
+    <title>
+        {% block title %}{% trans "kelp" %}{% endblock %}
+    </title>
+    <!-- Latest compiled and minified CSS -->
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/css/main.css">
+    {%  endblock %}
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="/static/js/jquery.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
-
-<!-- Custom Stylesheet-->
-<link rel="stylesheet" href="/static/css/main.css">
+    {% block javascript %}
+        <script src="/static/js/jquery.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    {%  endblock %}
+    {%  block extra_head %}{% endblock %}
 </head>
 
-
 <body>
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -53,13 +58,10 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-
-
-
-
-
-
-
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
 
 </body>
 </html>

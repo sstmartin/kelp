@@ -4,5 +4,11 @@ from django.template import RequestContext
 from website.models import Businesses, Reviews, Users
 
 # Create your views here.
-def index(request):
-    return render_to_response('index.html')
+def trending(request):
+    return render_to_response('trending.html')
+
+def results(request):
+    return render_to_response('results.html')
+
+def details(request):
+    return render_to_response('details.html')
