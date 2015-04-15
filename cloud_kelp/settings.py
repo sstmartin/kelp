@@ -95,7 +95,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    '~/kelp/cloud_kelp/templates/',
+    '/Users/scottstmartin/Documents/development/Django/kelp/website/templates/',
 )
 
 # List of finder classes that know how to find static files in
