@@ -2,6 +2,13 @@
 
 {%  block content %}
     <div>
-        Details
+        <div class="page-header">
+            <h1>{{ business.name }} <small>{{ business.categories }}</small></h1>
+            <p>{{ business.address }}</p>
+        </div>
+        <div class="jumbotron">
+            <div class="alert alert-success">{{ business.reviews }} Reviews</div>
+            <h3> Rating: {{ business.stars }} out of 5 stars!
+        </div>
     </div>
 {% endblock %}
