@@ -24,5 +24,6 @@ def details(request, query):
 
     business_processme = Businesses.objects.filter(business_id=query).get()
     business = services.package_business(business_processme)
+    reviews = Reviews.objects.filter(business_id=query).order_by('-review_date')  #minus orders by descending 
 
-    return render_to_response('details.html',{'business':business},context_instance=RequestContext(request))
+    return render_to_response('details.html',{'business':business, 'reviews':reviews},context_instance=RequestContext(request))

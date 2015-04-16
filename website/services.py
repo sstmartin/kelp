@@ -25,7 +25,9 @@ def package_business(business):
         'address':business.full_address,
         'categories':business.categories,
         'reviews':business.review_count,
-        'stars':business.stars
+        'stars':business.stars,
+        'longitude':business.longitude,
+        'latitude':business.latitude
     }
 
     return temp
