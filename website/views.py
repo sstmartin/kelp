@@ -14,10 +14,14 @@ def trending(request):
 def results(request):
     if 'search-text' in request.GET:
         search_results = request.GET['search-text']
-    return render_to_response('results.html', {'search_results': search_results}, context_instance=RequestContext(request))
+
+    close_businesses = services.conduct_search(search_results)
+
+    return render_to_response('results.html', {'businesses':close_businesses,'zip':search_results}, context_instance=RequestContext(request))
     
 def details(request, query):
     # sample id: zzucnDH33KlmbkI4rLyQTA
+
     business_processme = Businesses.objects.filter(business_id=query).get()
     business = services.package_business(business_processme)
 

@@ -1,4 +1,5 @@
 import urllib2
+from website.models import Businesses, Reviews, Users
 
 def distance(zip1, zip2):
     #zip1 = '30068'
@@ -11,6 +12,12 @@ def distance(zip1, zip2):
     distance = distance[9:-2]
     #returns distance in miles
     return distance
+
+def conduct_search(zip):
+    businesses = Businesses.objects.all().filter(full_address__contains=zip).filter(stars=5).order_by('-review_count')[0:10]
+    #dist = distance(zip,21104)
+
+    return businesses
 
 def package_business(business):
     temp = {

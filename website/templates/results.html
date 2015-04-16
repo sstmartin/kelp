@@ -2,6 +2,14 @@
 
 {%  block content %}
     <div>
-        Results: {{ search_results }}
+        <div class="page-header">
+            <h1> Results for {{ zip }}</h1>
+            <h4>Top 10 Five Star Rated Businesses Nearby</h4>
+        </div>
+        <div class="jumbotron">
+            {%  for business in businesses %}
+            <p><a href="/details/{{ business.business_id }}">{{ business.business_name }}</a> <br>{{ business.review_count }} reviews</p>
+            {%  endfor %}
+        </div>
     </div>
 {% endblock %}
