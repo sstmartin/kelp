@@ -29,7 +29,7 @@ def package_business(business):
         'longitude':business.longitude,
         'latitude':business.latitude
     }
-
+    temp['categories'] = temp['categories'].replace('"','').replace('[','').replace(']','').replace(',',', ')
     return temp
     
 def check_users():
