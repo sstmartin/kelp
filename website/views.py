@@ -25,6 +25,6 @@ def details(request, query):
     business_processme = Businesses.objects.filter(business_id=query).get()
     business = services.package_business(business_processme)
     high_activity_users = services.check_users()
-    reviews = Reviews.objects.filter(business_id=query).order_by('-review_date').exclude(user_id__in=high_activity_users)  #minus orders by descending 
+    reviews = Reviews.objects.filter(business_id=query).order_by('-review_date').exclude(user_id__in=high_activity_users)[:10]  #minus orders by descending 
 
     return render_to_response('details.html',{'business':business, 'reviews':reviews},context_instance=RequestContext(request))
