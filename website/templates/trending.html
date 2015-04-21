@@ -7,7 +7,7 @@
     <div class="jumbotron">
         {% for review in reviews %}
             <h4><a href="details/{{ review.business_id }}">{{ review.business_name }}</a></h4>
-            <p><i>"{{ review.text }}"</i></p>
+            <h5><i>"{{ review.text }}"</i></h5>
             <hr />
         {% endfor %}
     </div>
