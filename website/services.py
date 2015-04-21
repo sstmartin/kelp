@@ -1,5 +1,8 @@
 import urllib2
+import datetime
 from website.models import Businesses, Reviews, Users
+
+import pdb
 
 def distance(zip1, zip2):
     #zip1 = '30068'
@@ -18,6 +21,20 @@ def conduct_search(zip):
     #dist = distance(zip,21104)
 
     return businesses
+
+def trending_businesses():
+    raw_reviews = Reviews.objects.all().filter(stars=5).order_by('-review_date')[0:10]
+
+    reviews = []
+
+    for (i,review) in enumerate(raw_reviews):
+        business = Businesses.objects.all().filter(business_id=review.business_id)[0]
+        reviews.append({'business_id':review.business_id,
+                        'text':review.text,
+                        'business_name':business.business_name})
+
+
+    return reviews
 
 def package_business(business):
     temp = {

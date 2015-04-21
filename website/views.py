@@ -7,9 +7,9 @@ from website import services
 
 # Create your views here.
 def trending(request):
-    business = Businesses.objects.filter(business_id="zzucnDH33KlmbkI4rLyQTA").get()
+    reviews = services.trending_businesses()
 
-    return render_to_response('trending.html',{'business':business}, context_instance=RequestContext(request))
+    return render_to_response('trending.html',{'reviews':reviews}, context_instance=RequestContext(request))
 
 def results(request):
     if 'search-text' in request.GET:
