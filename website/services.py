@@ -31,3 +31,7 @@ def package_business(business):
     }
 
     return temp
+    
+def check_users():
+	high_users = Users.objects.all().filter(average_stars__gte=5).values('user_id')
+	return high_users    
